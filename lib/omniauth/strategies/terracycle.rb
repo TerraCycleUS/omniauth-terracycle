@@ -15,9 +15,9 @@ module OmniAuth
         base_uri = "https://api.terracycle.#{domain}"
 
         options.client_options = {
-          site:          base_uri+'/api',
-          authorize_url: base_uri+'/oauth/authorize',
-          token_url:     base_uri+'/oauth/token'
+          site:          "#{base_uri}/v2",
+          authorize_url: "#{base_uri}/oauth/authorize",
+          token_url:     "#{base_uri}/oauth/token"
         }
       end
 
@@ -43,7 +43,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/v2/account').parsed['account']
+        @raw_info ||= access_token.get('/account').parsed['account']
       end
     end
   end
