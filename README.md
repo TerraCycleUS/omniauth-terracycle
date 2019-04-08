@@ -25,8 +25,8 @@ Or install it yourself as:
 ```ruby
 use OmniAuth::Builder do
   provider :terracycle, ENV['TERRACYCLE_APP_KEY'], ENV['TERRACYCLE_APP_SECRET'],
-           :scope => 'account_read join_brigade leave_brigade',
-           :country_code => :us
+           :scope => 'public account_read create_shipment join_brigade list_shipments get_shipping_label',
+           :locale => :'en-US'
 end
 ```
 

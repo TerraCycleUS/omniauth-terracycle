@@ -1,19 +1,17 @@
 require 'omniauth-oauth2'
-require 'omniauth-terracycle/country'
 
 module OmniAuth
   module Strategies
     class TerraCycle < OmniAuth::Strategies::OAuth2
       option :name, 'terracycle'
-      option :country_code, :us
+      option :locale, 'en-US'
       option :base_uri, nil
 
       def initialize(*args, &block)
         super(*args, &block)
 
-        country_code = options.country_code
-        domain = OmniAuth::TerraCycle::Country.domain_for_code(country_code)
-        base_uri = options.base_uri || "https://api.terracycle.#{domain}"
+        locale = options.locale
+        base_uri = options.base_uri || "https://api.terracycle.com/#{locale}"
 
         options.client_options = {
           site:          base_uri,
