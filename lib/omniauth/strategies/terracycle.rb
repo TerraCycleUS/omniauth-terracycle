@@ -29,7 +29,7 @@ module OmniAuth
       end
 
       def account
-        @account ||= access_token.get('/v2/account').parsed['account']
+        @account ||= access_token.get("/#{options.locale}/v2/account").parsed['account']
       end
     end
   end
